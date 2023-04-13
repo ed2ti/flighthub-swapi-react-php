@@ -15,6 +15,12 @@ I developed this project to test my technical skills during a job application.
 ### 🔎 Search filters:
 name: The name of the Person
 
+## BackEnd API with PHP
+- /person/{search} => Return a list of people with {search} on name.
+- /people/{page} => Return a list of 10 people. {page} default = 1
+- /planets/{page} => Return a list of 10 planets. {page} default = 1
+- /starships/{page} => Return a list of 10 starships. {page} default = 1
+
 ## 🆗 watch Next Steps
 In this simple project, there are some improves that I will do affter:
 
@@ -33,8 +39,8 @@ Simply run the command below, and it should be available at http://localhost:[PO
 git clone https://github.com/ed2ti/flighthub-swapi-react-php
 npm install or yarn install
 
-### 1) PHP
+1) PHP
 Go to src/backend and run php -S localho:8080
 
-### 2) REACT
-yarn start
+2) REACT
+Go to src and run yarn start
