@@ -13,41 +13,40 @@ class Planets extends Component {
   }
 
   async componentDidMount() {
-    const getUrl = 'http://localhost:8080/people/' + this.page
+    const getUrl = 'http://localhost:8080/planets/' + this.page
     const result = await axios.get(getUrl);
     this.setState({ planets: result.data.results });
+    this.setState({ pages: result.data.pages });
   }
 
   render() {
     return (
       <div>
         <div class='row'>
-          <h2>People List</h2>
+          <h2>Planets List</h2>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Height</th>
-                <th>Mass</th>
-                <th>Hair Color</th>
-                <th>Skin Color</th>
-                <th>Eye Color</th>
-                <th>Birth Year</th>
-                <th>Gender</th>
+                <th scope="col">Name</th>
+                <th scope="col">climate</th>
+                <th scope="col">diameter</th>
+                <th scope="col">gravity</th>
+                <th scope="col">population</th>
+                <th scope="col">rotation period</th>
+                <th scope="col">surface water</th>
               </tr>
             </thead>
             <tbody>
               {
-                this.state.people.map((planet) =>
+                this.state.planets.map((planet) =>
                   <tr>
                     <td>{planet.name}</td>
-                    <td>{planet.height}</td>
-                    <td>{planet.mass}</td>
-                    <td>{planet.hair_color}</td>
-                    <td>{planet.skin_color}</td>
-                    <td>{planet.eye_color}</td>
-                    <td>{planet.birth_year}</td>
-                    <td>{planet.gender}</td>
+                    <td>{planet.climate}</td>
+                    <td>{planet.diameter}</td>
+                    <td>{planet.gravity}</td>
+                    <td>{planet.population}</td>
+                    <td>{planet.rotation_period}</td>
+                    <td>{planet.surface_water}</td>
                   </tr>
                 )
               }

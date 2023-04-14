@@ -7,15 +7,17 @@ class People extends Component {
     super(props)
     this.state = {
       people: [],
+      pages: 0
     }
-    this.pages = 0
     this.page = 1
   }
 
   async componentDidMount() {
     const getUrl = 'http://localhost:8080/people/' + this.page
+    /* const getUrl = 'https://swapi.dev/api/people/?page=' + this.page */
     const result = await axios.get(getUrl);
     this.setState({ people: result.data.results });
+    this.setState({ pages: result.data.pages });
   }
 
   render() {

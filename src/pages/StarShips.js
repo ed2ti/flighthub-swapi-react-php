@@ -6,16 +6,16 @@ class StarShips extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      people: [],
+      starships : [],
+      pages: 0
     }
-    this.pages = 0
     this.page = 1
   }
 
   async componentDidMount() {
-    const getUrl = 'http://localhost:8080/people/' + this.page
+    const getUrl = 'http://localhost:8080/starships/' + this.page
     const result = await axios.get(getUrl);
-    this.setState({ people: result.data.results });
+    this.setState({ starships: result.data.results });
   }
 
   render() {
@@ -26,28 +26,24 @@ class StarShips extends Component {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Height</th>
-                <th>Mass</th>
-                <th>Hair Color</th>
-                <th>Skin Color</th>
-                <th>Eye Color</th>
-                <th>Birth Year</th>
-                <th>Gender</th>
+                <th scope="col">Name</th>
+                <th scope="col">model</th>
+                <th scope="col">MGLT</th>
+                <th scope="col">passengers</th>
+                <th scope="col">starship_class</th>
+                <th scope="col">hyperdrive_rating</th>
               </tr>
             </thead>
             <tbody>
               {
-                this.state.people.map((person) =>
+                this.state.starships.map((starship) =>
                   <tr>
-                    <td>{person.name}</td>
-                    <td>{person.height}</td>
-                    <td>{person.mass}</td>
-                    <td>{person.hair_color}</td>
-                    <td>{person.skin_color}</td>
-                    <td>{person.eye_color}</td>
-                    <td>{person.birth_year}</td>
-                    <td>{person.gender}</td>
+                    <td>{starship.name}</td>
+                    <td>{starship.model }</td>
+                    <td>{starship.MGLT}</td>
+                    <td>{starship.passengers}</td>
+                    <td>{starship.starship_class}</td>
+                    <td>{starship.hyperdrive_rating}</td>
                   </tr>
                 )
               }
